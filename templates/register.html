@@ -1,0 +1,95 @@
+{% extends 'base.html' %} {% block title %}
+<title>Register</title>
+{% endblock title %} {% block body %}
+
+<header
+  class="masthead"
+  style="background-image: url('static/assets/img/contact-bg.jpg')"
+>
+  <div class="container position-relative px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="col-md-10 col-lg-8 col-xl-7">
+        <div class="page-heading">
+          <h1>Registration Form</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+{% for message in messages %}
+<div
+  class="alert alert-{{message.tags}} alert-dismissible fade show"
+  role="alert"
+>
+  <strong>Message </strong> {{message}}
+  <button
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="alert"
+    aria-label="Close"
+  ></button>
+</div>
+{% endfor %}
+
+<form action="register" method="POST">
+  {% csrf_token %}
+
+  <div class="container">
+    <div class="mb-3">
+      <label for="Fname" class="form-label">First Name</label>
+      <input type="text" class="form-control" id="Fname" name="Fname" />
+
+      <label for="Lname" class="form-label">Last Name</label>
+      <input type="text" class="form-control" id="Lname" name="Lname" />
+
+      <label for="Uname" class="form-label">Username</label>
+      <input
+        type="text"
+        class="form-control"
+        id="Uname"
+        name="Uname"
+        placeholder="Username"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Email address</label>
+      <input
+        type="email"
+        class="form-control"
+        id="exampleInputEmail1"
+        name="Email"
+        placeholder="Email"
+        aria-describedby="emailHelp"
+      />
+      <div id="emailHelp" class="form-text">
+        We'll never share your email with anyone else.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword" class="form-label">Password</label>
+      <input
+        type="password"
+        class="form-control"
+        id="exampleInputPassword"
+        placeholder="Password"
+        name="pass1"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword2" class="form-label"
+        >Confirm Password</label
+      >
+      <input
+        type="password"
+        class="form-control"
+        id="exampleInputPassword2"
+        name="pass2"
+      />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </div>
+</form>
+{% endblock body %}

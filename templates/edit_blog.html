@@ -1,0 +1,16 @@
+{% extends 'base.html' %} {% load static %} {% block title %}
+<title>post_blog</title>
+{% endblock title %} {% block body %}
+
+<div class="container">
+  <div style="border: 1px solid; margin: 5px; padding: 10px">
+    <h2 style="align: center">Edit Content</h2>
+    <div style="border: 1px solid"></div>
+    <form method="POST">
+      {% csrf_token %} {{ edit_blog.as_p }}
+
+      <input type="submit" value="Update" class="btn btn-primary" />
+    </form>
+  </div>
+</div>
+{% endblock body %}
